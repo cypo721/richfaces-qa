@@ -143,4 +143,21 @@ public abstract class AbstractTestToggleControl extends AbstractWebDriverTest {
         assertFalse(items[1].isDisplayed(), "Item 2 should not be visible.");
         assertFalse(items[2].isDisplayed(), "Item 3 should not be visible.");
     }
+
+    @CoversAttributes("disableDefault")
+    public void testDisableDefault() {
+        Graphene.guardAjax(getPage().getTcPanel1Item2()).click();
+        Graphene.waitGui().until().element(getPage().getPanel1Item2Content()).is().visible();
+
+        toggleControlAttributes.set(ToggleControlAttributes.disableDefault, true);
+        Graphene.guardAjax(getPage().getTcCustom()).click();
+        Graphene.waitGui().until().element(getPage().getPanel1Item1Content()).is().visible();
+
+        Graphene.guardAjax(getPage().getTcPanel1Item2()).click();
+        Graphene.waitGui().until().element(getPage().getPanel1Item2Content()).is().visible();
+
+        toggleControlAttributes.set(ToggleControlAttributes.disableDefault, false);
+        Graphene.guardHttp(getPage().getTcCustom()).click();
+        Graphene.waitGui().until().element(getPage().getPanel1Item1Content()).is().visible();
+    }
 }

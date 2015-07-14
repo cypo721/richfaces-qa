@@ -40,6 +40,25 @@ public class TestTCTabPanel extends AbstractTestToggleControl {
         return "richToggleControl/tabPanel.xhtml";
     }
 
+    private WebElement[] getItems1() {
+        if (items1 == null) {
+            items1 = new WebElement[] { getPage().getPanel1Item1(), getPage().getPanel1Item2(), getPage().getPanel1Item3() };
+        }
+        return items1;
+    }
+
+    private WebElement[] getItems2() {
+        if (items2 == null) {
+            items2 = new WebElement[] { getPage().getPanel2Item1(), getPage().getPanel2Item2(), getPage().getPanel2Item3() };
+        }
+        return items2;
+    }
+
+    @Test
+    public void testDisableDefault() {
+        super.testDisableDefault();
+    }
+
     @Test
     public void testSwitchFirstPanel() {
         testSwitchFirstPanel(getItems1());
@@ -58,19 +77,5 @@ public class TestTCTabPanel extends AbstractTestToggleControl {
     @Test
     public void testTargetPanel() {
         testTargetPanel(getItems2());
-    }
-
-    private WebElement[] getItems1() {
-        if (items1 == null) {
-            items1 = new WebElement[] { getPage().getPanel1Item1(), getPage().getPanel1Item2(), getPage().getPanel1Item3() };
-        }
-        return items1;
-    }
-
-    private WebElement[] getItems2() {
-        if (items2 == null) {
-            items2 = new WebElement[] { getPage().getPanel2Item1(), getPage().getPanel2Item2(), getPage().getPanel2Item3() };
-        }
-        return items2;
     }
 }

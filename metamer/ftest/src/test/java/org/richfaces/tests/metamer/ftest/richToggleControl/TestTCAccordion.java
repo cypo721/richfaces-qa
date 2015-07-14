@@ -40,6 +40,25 @@ public class TestTCAccordion extends AbstractTestToggleControl {
         return "richToggleControl/accordion.xhtml";
     }
 
+    private WebElement[] getItems1() {
+        if (items1 == null) {
+            items1 = new WebElement[] { getPage().getPanel1Item1Content(), getPage().getPanel1Item2Content(), getPage().getPanel1Item3Content() };
+        }
+        return items1;
+    }
+
+    private WebElement[] getItems2() {
+        if (items2 == null) {
+            items2 = new WebElement[] { getPage().getPanel2Item1Content(), getPage().getPanel2Item2Content(), getPage().getPanel2Item3Content() };
+        }
+        return items2;
+    }
+
+    @Test
+    public void testDisableDefault() {
+        super.testDisableDefault();
+    }
+
     @Test
     public void testSwitchFirstPanel() {
         testSwitchFirstPanel(getItems1());
@@ -58,19 +77,5 @@ public class TestTCAccordion extends AbstractTestToggleControl {
     @Test
     public void testTargetPanel() {
         testTargetPanel(getItems2());
-    }
-
-    private WebElement[] getItems1() {
-        if (items1 == null) {
-            items1 = new WebElement[] { getPage().getPanel1Item1Content(), getPage().getPanel1Item2Content(), getPage().getPanel1Item3Content() };
-        }
-        return items1;
-    }
-
-    private WebElement[] getItems2() {
-        if (items2 == null) {
-            items2 = new WebElement[] { getPage().getPanel2Item1Content(), getPage().getPanel2Item2Content(), getPage().getPanel2Item3Content() };
-        }
-        return items2;
     }
 }
